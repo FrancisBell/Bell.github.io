@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Gitee Pages Action
+        # You may pin to the exact commit or the version.
+        # uses: yanglbme/gitee-pages-action@3f280c33be2734322ab33e39e36289340f6daf47
+        uses: yanglbme/gitee-pages-action@v1.2.4
+        with:
+          # The Gitee username, like yanglbme
+          gitee-username: Francis
+          # The Gitee password
+          gitee-password: ZQMgitee0034
+          # The Gitee repository, like doocs/leetcode
+          gitee-repo: https://gitee.com/zqmzhong/zqmzhong.gitee.io.git
+          # Which branch to build
+          branch: master
+          # Which directory to build
+          # directory: # optional, default is 
+          # Use force https or not
+          https: true
